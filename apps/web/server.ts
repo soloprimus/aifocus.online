@@ -13,11 +13,12 @@ const PORT = Number(process.env.WEB_PORT || process.env.PORT || 3000);
 const HOST = process.env.WEB_HOST || "127.0.0.1";
 const API = new URL(process.env.API_BASE_URL || "http://127.0.0.1:3001");
 /**
- * Whether a reverse proxy in front (Caddy, nginx) records the visitor in X-Forwarded-For. Without one
- * the header is never believed: a visitor could name any address and slip past the api's per-visitor
- * limits (sign-in attempts, feedback).
+ * Who names the visitor. "true": a reverse proxy in front (Caddy, nginx) records it in X-Forwarded-For.
+ * "cloudflare": Cloudflare's CF-Connecting-IP, for a site reached only through Cloudflare (a Cloudflare
+ * Tunnel, or a firewall that admits Cloudflare alone). Otherwise no header is believed: a visitor could
+ * name any address and slip past the api's per-visitor limits (sign-in attempts, feedback).
  */
-const TRUST_PROXY = process.env.TRUST_PROXY === "true";
+const TRUST_PROXY = process.env.TRUST_PROXY === "true" || process.env.TRUST_PROXY === "cloudflare" ? process.env.TRUST_PROXY : "false";
 const CLIENT_DIR = path.resolve(import.meta.dirname, "build/client");
 /** Browsers keep a page at most this long, so a withdrawal reaches them within minutes. */
 const BROWSER_MAX_SECONDS = 300;
@@ -135,9 +136,13 @@ async function handle(req: import("node:http").IncomingMessage, res: import("nod
 
   if (isApiOwned(pathname)) {
     // The visitor's address, decided here: the one the trusted proxy saw (the last X-Forwarded-For
-    // entry), or this connection's own. Both headers carry only that.
+    // entry, or Cloudflare's CF-Connecting-IP), or this connection's own. Both headers carry only that.
+    const own = req.socket.remoteAddress ?? "";
     const forwarded = String(req.headers["x-forwarded-for"] ?? "").split(",").map((v) => v.trim()).filter(Boolean);
-    const client = TRUST_PROXY && forwarded.length ? forwarded[forwarded.length - 1]! : (req.socket.remoteAddress ?? "");
+    const client =
+      TRUST_PROXY === "cloudflare" ? String(req.headers["cf-connecting-ip"] ?? "").trim() || own
+      : TRUST_PROXY === "true" && forwarded.length ? forwarded[forwarded.length - 1]!
+      : own;
     const headers = { ...req.headers, "x-forwarded-for": client, "x-real-ip": client };
     const upstream = httpRequest({ hostname: API.hostname, port: API.port, path: raw, method: req.method, headers }, (up) => {
       res.writeHead(up.statusCode ?? 502, up.headers);

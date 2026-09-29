@@ -97,26 +97,53 @@ docker compose up -d --build
 
 ## 部署到 aifocus.online
 
-1. 准备一台 2 核 4 GB 以上、装了 Docker 的服务器。信源大多在海外，**建议用海外或香港服务器**；放在中国大陆需要 ICP 备案，并在 `.env` 里配 `EGRESS_PROXY_URL` 才能抓到海外信源。
-2. 把 `aifocus.online` 的 A 记录解析到服务器 IP。
-3. 在服务器上：
+aifocus.online 的 DNS 在 Cloudflare。Cloudflare 只负责域名、HTTPS 和加速，**网站本身（网页、接口、后台任务、PostgreSQL）要跑在一台自己的服务器上**：2 核 4 GB 以上、装了 Docker。信源大多在海外，建议用海外或香港服务器；放在中国大陆需要 ICP 备案，并在 `.env` 里配 `EGRESS_PROXY_URL` 才能抓到海外信源。
+
+### 推荐：Cloudflare Tunnel（服务器不开放任何端口）
+
+服务器主动连到 Cloudflare，访客经 Cloudflare 进来；不用申请证书、不用开 80/443，服务器 IP 也不会暴露。
+
+1. **在 Cloudflare 创建隧道**：控制台 → Zero Trust → Networks → Tunnels → Create a tunnel → 选 Cloudflared → 起个名字（如 `aifocus`）。安装步骤那一页的命令里有一长串 token（`eyJ` 开头），复制下来，其余命令不用执行。
+2. **给隧道加公共主机名**：Public Hostname → Add：Subdomain 留空，Domain 选 `aifocus.online`，Service 选 `HTTP`，URL 填 `web:3000`。Cloudflare 会自动建好 DNS 记录；如果 `aifocus.online` 已经有 A 或 CNAME 记录，先在 DNS 页删掉它。
+3. **在服务器上**：
    ```bash
    git clone https://github.com/soloprimus/aifocus.online.git && cd aifocus.online
    node scripts/init-env.ts --llm-key <模型 API Key>    # 没有 Node 就复制 .env.example 手动填
    ```
-4. 编辑 `.env`：
+4. **编辑 `.env`**：
    ```bash
    SITE_URL=https://aifocus.online
-   SITE_DOMAIN=aifocus.online
    PORT=127.0.0.1:3000
-   TRUST_PROXY=true
+   TRUST_PROXY=cloudflare
+   CLOUDFLARE_TUNNEL_TOKEN=<第 1 步复制的 token>
    ```
-5. 带 HTTPS 启动（Caddy 自动申请和续期证书）：
+   `TRUST_PROXY=cloudflare` 让网站用 Cloudflare 给出的访客地址（`CF-Connecting-IP`），登录次数和反馈的限制才按真实访客计算；`PORT=127.0.0.1:3000` 让网站只经隧道访问，别人无法绕过 Cloudflare 伪造地址。
+5. **启动**：
    ```bash
-   docker compose --profile https up -d --build
+   docker compose --profile cloudflare up -d --build
    ```
+   几十秒后打开 <https://aifocus.online>，后台在 `/admin`。隧道状态在 Cloudflare 的 Tunnels 页显示 Healthy。
 
-更新：`git pull && docker compose --profile https up -d --build`。备份、日志、中国大陆镜像等细节见 [docs/deploy.md](docs/deploy.md)。
+更新：`git pull && docker compose --profile cloudflare up -d --build`。
+
+### Cloudflare 控制台里建议检查的设置
+
+| 位置 | 建议 | 原因 |
+|---|---|---|
+| SSL/TLS → Overview | Full (strict) | 隧道本身加密；这样其他子域名也不会退回明文 |
+| SSL/TLS → Edge Certificates | 打开 Always Use HTTPS | 统一走 HTTPS |
+| Speed → Optimization | 关闭 Rocket Loader | 它会改写页面脚本，React 页面可能打不开或按钮失灵 |
+| Email Address Obfuscation（旧版控制台在 Scrape Shield 下） | 关闭 | 它会改写页面 HTML，和页面脚本对不上 |
+| Security → Bots（AI 爬虫拦截、Bot Fight Mode） | 按需决定是否拦截 AI 爬虫；慎用 Bot Fight Mode | 本站有 RSS、公开 API、MCP 和 `llms.txt`，本来就是给阅读器和 Agent 用的，拦了它们就读不到 |
+| Caching | 保持默认 | 默认只缓存脚本、样式和图片；网页和接口自己带了缓存头 |
+
+想让 `www.aifocus.online` 也能访问，在 Rules → Redirect Rules 里加一条跳转到 `https://aifocus.online` 的规则（DNS 里给 `www` 加一条开启代理的记录）。
+
+### 另一种：A 记录 + Caddy
+
+如果不用隧道，而是把 A 记录指向服务器 IP：先把这条记录设成 **DNS only（灰色云朵）**，`.env` 里设 `SITE_DOMAIN=aifocus.online`、`PORT=127.0.0.1:3000`、`TRUST_PROXY=true`，再用 `docker compose --profile https up -d --build`，由 Caddy 申请证书。不要在开着橙色云朵代理的同时用 Caddy 自动申请证书：证书申请和续期会被 Cloudflare 的代理挡住，而且访客地址会变成 Cloudflare 的节点地址。
+
+备份、日志、中国大陆镜像等细节见 [docs/deploy.md](docs/deploy.md)。
 
 ## 上线前要你自己决定的事
 

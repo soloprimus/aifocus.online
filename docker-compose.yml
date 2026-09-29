@@ -1,5 +1,6 @@
 # docker compose up -d --build     → http://localhost:3000   (the admin is at /admin)
 # docker compose --profile https up -d --build   → HTTPS for SITE_DOMAIN through Caddy
+# docker compose --profile cloudflare up -d --build   → through a Cloudflare Tunnel (no open ports)
 name: aifocus
 
 x-app: &app
@@ -84,6 +85,19 @@ services:
     volumes:
       - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy:/data
+    depends_on:
+      - web
+
+  # A Cloudflare Tunnel instead of Caddy: Cloudflare serves HTTPS and reaches web over an outbound
+  # tunnel, so this server opens no ports. Route the tunnel's public hostname to http://web:3000 and
+  # put its token in CLOUDFLARE_TUNNEL_TOKEN; set TRUST_PROXY=cloudflare.
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    profiles: ["cloudflare"]
+    restart: unless-stopped
+    command: ["tunnel", "--no-autoupdate", "run"]
+    environment:
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN:-}
     depends_on:
       - web
 
