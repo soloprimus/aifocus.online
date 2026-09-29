@@ -72,13 +72,13 @@ AIFocus 不使用 AIHOT 的名字和 Logo；页脚保留“由 AIHOT 开源框�
 | 芯片与半导体（官方） | NVIDIA Newsroom、NVIDIA Blog、AMD、SK hynix、Samsung、Arm |
 | 云与基础设施（官方） | Microsoft（Blog、Source）、Google Cloud、AWS、Engineering at Meta |
 | 模型（官方） | OpenAI、Google DeepMind、Mistral |
-| 半导体与硬件媒体 | SemiAnalysis、DIGITIMES Asia、Tom's Hardware、EE Times、Semiconductor Engineering、IEEE Spectrum、ServeTheHome、The Next Platform |
-| 数据中心 | DatacenterDynamics、The Register |
+| 半导体与硬件媒体 | SemiAnalysis、DIGITIMES Asia、Tom's Hardware、EE Times、Semiconductor Engineering、IEEE Spectrum、ServeTheHome、HPCwire |
+| 数据中心 | DatacenterDynamics、Data Center Knowledge |
 | 商业、资本与分析 | The Information、CNBC、TechCrunch、Ars Technica、Stratechery、Fabricated Knowledge、Interconnects |
 | 机器人 | The Robot Report |
 | 中文 | 智东西、量子位、雷峰网 |
 
-官方一手信源为 T1（门槛低一些），媒体与分析师为 T2。上线后在后台“信源”页增删、试抓、调频率。台积电、美光、博通、ASML、英特尔等官网的 RSS 在测试时拒绝抓取或已下线，需要时可以用 `web_list`（网页列表）或外部推送接口补上；X 账号和微信公众号需要付费的 SocialData / 极致了 key（见 [docs/sources.md](docs/sources.md)）。
+官方一手信源为 T1（门槛低一些），媒体与分析师为 T2。上线后在后台“信源”页增删、试抓、调频率。台积电、美光、博通、ASML、英特尔等官网的 RSS 在测试时拒绝抓取或已下线，The Next Platform 和 The Register 会对自动抓取弹出人机验证，所以都没有放进默认信源；需要时可以用 `web_list`（网页列表）或外部推送接口补上；X 账号和微信公众号需要付费的 SocialData / 极致了 key（见 [docs/sources.md](docs/sources.md)）。
 
 ## 本地跑起来
 

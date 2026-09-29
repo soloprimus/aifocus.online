@@ -466,11 +466,11 @@
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-the-next-platform",
-      "name": "The Next Platform",
+      "id": "rss-hpcwire",
+      "name": "HPCwire",
       "kind": "rss",
       "config": {
-        "feedUrl": "https://www.nextplatform.com/feed/",
+        "feedUrl": "https://www.hpcwire.com/feed/",
         "_aihot": {
           "initialBackfillLimit": 5
         }
@@ -479,7 +479,7 @@
       "first_party": false,
       "owner_entity_id": null,
       "participation_mode": "editorial",
-      "interval_minutes": 120,
+      "interval_minutes": 60,
       "tags": [
         "媒体",
         "算力"
@@ -510,11 +510,11 @@
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-the-register-onprem",
-      "name": "The Register · On-Prem",
+      "id": "rss-datacenter-knowledge",
+      "name": "Data Center Knowledge",
       "kind": "rss",
       "config": {
-        "feedUrl": "https://www.theregister.com/on_prem/headlines.atom",
+        "feedUrl": "https://www.datacenterknowledge.com/rss.xml",
         "_aihot": {
           "initialBackfillLimit": 5
         }
