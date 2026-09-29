@@ -12,6 +12,12 @@
       "runtimeExecutable": "node",
       "runtimeArgs": ["--env-file=.env", "apps/api/src/main.ts"],
       "port": 3001
+    },
+    {
+      "name": "web-prod",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--env-file=.env", "apps/web/server.ts"],
+      "port": 3000
     }
   ]
 }

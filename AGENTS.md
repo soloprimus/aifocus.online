@@ -1,8 +1,10 @@
 # 给 Agent 的说明
 
-这是一个行业热点网站的框架：采集信源、用模型筛选和写作、归组事件、出日报，并通过网站、RSS、公开 API 和 MCP 对外提供。默认配置是一个 AI 行业的示例站。先读 README，再按任务读 `docs/` 里对应的文档。
+这是 AIFocus（aifocus.online），一个 AI 产业链新闻精选与监测站，基于 AIHOT 开源框架：采集信源、用模型筛选和写作、归组事件、出日报，并通过网站、RSS、公开 API 和 MCP 对外提供。行业包 `industry/` 已经按 AI 产业链配置好（芯片与半导体、算力与基础设施、模型、应用与终端、资本、政策、观点）；主题页的产业链地图由 `industry/chain.ts` 决定。先读 README，再按任务读 `docs/` 里对应的文档。
 
-## 最常见的任务：改成另一个行业
+改了 `industry/` 里的分类、标签、主题、地图、提示词或信源，先跑 `node --test tests/industry-pack.test.ts`（不需要数据库）。
+
+## 调整行业包（信源、口径、分类）
 
 按 `docs/customize.md` 的顺序做。行业相关的一切都在 `industry/`：站名文案（`site.ts`）、分类标签（`taxonomy.ts`）、主题（`topics.json`）、示范信源（`sources.json`）、提示词（`prompts/`）、门槛（`selection.ts`）、模块开关（`features.ts`）、品牌（`brand/`）、条款页（`pages/`）。通常不需要改 `apps/` 和 `packages/`。
 
