@@ -18,6 +18,12 @@
       "runtimeExecutable": "node",
       "runtimeArgs": ["--env-file=.env", "apps/web/server.ts"],
       "port": 3000
+    },
+    {
+      "name": "static",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8790", "--directory", "static-site/dist"],
+      "port": 8790
     }
   ]
 }

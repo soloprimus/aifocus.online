@@ -15,8 +15,9 @@
     "dev:api": "npm run dev -w @aihot/api",
     "dev:worker": "npm run dev -w @aihot/worker",
     "dev:web": "npm run dev -w @aihot/web",
-    "typecheck": "tsc -p packages/contracts && tsc -p packages/backend && tsc -p apps/api && tsc -p apps/worker && tsc -p tests && npm run typecheck -w @aihot/web",
-    "test": "node --test --test-concurrency=1 --test-timeout=120000 \"tests/*.test.ts\""
+    "typecheck": "tsc -p packages/contracts && tsc -p packages/backend && tsc -p apps/api && tsc -p apps/worker && tsc -p tests && tsc -p static-site && npm run typecheck -w @aihot/web",
+    "test": "node --test --test-concurrency=1 --test-timeout=120000 \"tests/*.test.ts\"",
+    "build:static": "node static-site/build.ts"
   },
   "devDependencies": {
     "@modelcontextprotocol/client": "2.1.0",

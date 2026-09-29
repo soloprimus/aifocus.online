@@ -99,6 +99,16 @@ docker compose up -d --build
 
 aifocus.online 的 DNS 在 Cloudflare。Cloudflare 只负责域名、HTTPS 和加速，**网站本身（网页、接口、后台任务、PostgreSQL）要跑在一台自己的服务器上**：2 核 4 GB 以上、装了 Docker。信源大多在海外，建议用海外或香港服务器；放在中国大陆需要 ICP 备案，并在 `.env` 里配 `EGRESS_PROXY_URL` 才能抓到海外信源。
 
+### 现在：静态预览版（Cloudflare Pages，不需要服务器）
+
+完整版需要服务器；在那之前，aifocus.online 先挂静态预览版：首页、产业链地图、关于与信源名单是真内容，精选、日报、热点榜、全部动态在各自的网址先放“即将上线”占位页。页面由 `static-site/build.ts` 从 `industry/` 生成到 `static-site/dist/`（已提交），Cloudflare Pages 直接托管，不需要构建。
+
+1. Cloudflare 控制台 → Workers & Pages → Create → Pages → Connect to Git（导入现有 Git 仓库），授权 GitHub 后选 `soloprimus/aifocus.online`。
+2. 构建设置：Production branch 选 `main`；Framework preset 选 None；Build command 留空（要求必填就写 `exit 0`）；Build output directory 填 `dist`；展开 Root directory（高级）填 `static-site`。Save and Deploy。
+3. 部署成功后：项目 → Custom domains → Set up a custom domain → 填 `aifocus.online`，按提示确认；Cloudflare 会自动配置 DNS 和证书。如果提示已有同名记录，先在 DNS 页删掉那条记录再试。
+4. 以后改了 `industry/` 里的文案、地图或信源：运行 `npm run build:static`，提交 `static-site/dist` 并 push，Cloudflare 会自动重新部署。
+5. 完整版上线时：在这个 Pages 项目的 Custom domains 里移除 `aifocus.online`，再按下面的隧道步骤把域名绑到隧道上。
+
 ### 推荐：Cloudflare Tunnel（服务器不开放任何端口）
 
 服务器主动连到 Cloudflare，访客经 Cloudflare 进来；不用申请证书、不用开 80/443，服务器 IP 也不会暴露。

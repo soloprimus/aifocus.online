@@ -3,6 +3,7 @@
 !.env.example
 node_modules/
 dist/
+!static-site/dist/
 .cache/
 .DS_Store
 .data/

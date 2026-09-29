@@ -4,6 +4,8 @@
 
 改了 `industry/` 里的分类、标签、主题、地图、提示词或信源，先跑 `node --test tests/industry-pack.test.ts`（不需要数据库）。
 
+完整版上线前，aifocus.online 由 Cloudflare Pages 托管 `static-site/dist/` 里的静态预览版（`static-site/build.ts` 从 `industry/` 生成，结果要提交）。改了站名文案、产业链地图、主题或信源后，运行 `npm run build:static` 并一起提交 `static-site/dist`。
+
 ## 调整行业包（信源、口径、分类）
 
 按 `docs/customize.md` 的顺序做。行业相关的一切都在 `industry/`：站名文案（`site.ts`）、分类标签（`taxonomy.ts`）、主题（`topics.json`）、示范信源（`sources.json`）、提示词（`prompts/`）、门槛（`selection.ts`）、模块开关（`features.ts`）、品牌（`brand/`）、条款页（`pages/`）。通常不需要改 `apps/` 和 `packages/`。
