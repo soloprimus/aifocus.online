@@ -3,6 +3,9 @@
 // 门槛按信源分级区分：官方一手信源的门槛低一些，媒体和个人的高一些。改了门槛或评分提示词，
 // 用 scripts/eval-selection.ts 在你自己标注的样本上重跑一遍，再决定上线（见 docs/selection.md）。
 
+// AIFocus 目前沿用 AIHOT 在 AI 领域校准出的门槛；评分标准已经换成 AI 产业链口径，
+// 上线后请用自己标注的 100–200 条产业链样本重新校准（docs/selection.md），再动这里的数字。
+
 export const SELECTION = {
   /**
    * 信源分级 → 入选门槛（平均分）。分级在后台“信源”里给每个源设置：

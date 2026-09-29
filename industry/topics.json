@@ -1,578 +1,511 @@
 {
-  "exportedAt": "2026-09-26",
+  "exportedAt": "2026-09-29",
   "groups": [
     {
-      "key": "company",
-      "name": "公司与模型",
-      "blurb": "按厂商与模型系追踪：谁发了什么、又赢了哪一局"
+      "key": "field",
+      "name": "产业链环节",
+      "blurb": "从芯片到应用，按产业链上下游追踪每一环的变化"
     },
     {
-      "key": "field",
-      "name": "技术方向",
-      "blurb": "按技术领域深挖：Agent、多模态、具身智能……"
+      "key": "company",
+      "name": "公司与机构",
+      "blurb": "按公司追踪：芯片厂、云厂商、模型公司与终端厂商"
     },
     {
       "key": "genre",
-      "name": "内容形态",
-      "blurb": "按内容类型浏览：论文、教程、观点、政策……"
+      "name": "事件类型",
+      "blurb": "按事件性质浏览：发布、产能、订单、融资、财报、政策……"
     }
   ],
   "topics": [
     {
-      "slug": "openai",
-      "name": "OpenAI / ChatGPT",
-      "group": "company",
-      "entityId": "openai",
-      "tags": [
-        "OpenAI",
-        "entity:openai"
-      ],
-      "definition": "OpenAI 的全部动态：GPT 系列模型、ChatGPT 与 Sora 产品、公司战略与人事的持续追踪。",
-      "related": [
-        "anthropic",
-        "google",
-        "model-releases"
-      ]
+      "slug": "gpu",
+      "name": "GPU 与加速卡",
+      "group": "field",
+      "tags": ["GPU"],
+      "definition": "数据中心 GPU 与 AI 加速卡的发布、路线图、出货与定价：算力供给的第一块砖。",
+      "related": ["custom-asic", "memory", "nvidia"]
     },
     {
-      "slug": "anthropic",
-      "name": "Anthropic / Claude",
-      "group": "company",
-      "entityId": "anthropic",
-      "tags": [
-        "Anthropic",
-        "entity:anthropic"
-      ],
-      "definition": "Anthropic 的全部动态：Claude 系列模型、Claude Code、安全研究路线与公司进展的持续追踪。",
-      "related": [
-        "openai",
-        "google",
-        "safety"
-      ]
+      "slug": "custom-asic",
+      "name": "ASIC 与定制芯片",
+      "group": "field",
+      "tags": ["ASIC/定制芯片"],
+      "definition": "云厂商与模型公司的自研芯片：TPU、Trainium、MTIA 以及博通、Marvell 等定制芯片方案。",
+      "related": ["gpu", "cloud", "broadcom"]
     },
     {
-      "slug": "google",
-      "name": "Google / Gemini",
-      "group": "company",
-      "entityId": "google",
-      "tags": [
-        "Google",
-        "DeepMind",
-        "entity:google"
-      ],
-      "definition": "Google 与 DeepMind 的 AI 动态：Gemini 系列、Veo 视频模型、研究成果与产品生态的持续追踪。",
-      "related": [
-        "openai",
-        "anthropic",
-        "multimodal"
-      ]
+      "slug": "memory",
+      "name": "HBM 与存储",
+      "group": "field",
+      "tags": ["HBM/存储"],
+      "definition": "HBM、DRAM 与企业级存储的代际、产能、良率和价格：AI 芯片最紧的瓶颈之一。",
+      "related": ["gpu", "packaging", "sk-hynix"]
     },
     {
-      "slug": "deepseek",
-      "name": "DeepSeek",
-      "group": "company",
-      "entityId": "deepseek",
-      "tags": [
-        "DeepSeek",
-        "entity:deepseek"
-      ],
-      "definition": "DeepSeek（深度求索）的模型发布、开源权重与技术报告——开源大模型价格与性能双卷的风向标。",
-      "related": [
-        "qwen",
-        "open-source",
-        "model-releases"
-      ]
+      "slug": "foundry",
+      "name": "晶圆代工与制程",
+      "group": "field",
+      "tags": ["晶圆代工"],
+      "definition": "先进制程节点、晶圆厂建设与产能利用率：谁能造出下一代 AI 芯片、在哪里造。",
+      "related": ["packaging", "equipment", "tsmc"]
     },
     {
-      "slug": "qwen",
-      "name": "千问 Qwen",
-      "group": "company",
-      "entityId": "qwen",
-      "tags": [
-        "entity:qwen"
-      ],
-      "definition": "阿里千问 Qwen 系列的开源发布与迭代：从旗舰模型到端侧小模型的全谱系动态。",
-      "related": [
-        "deepseek",
-        "kimi",
-        "open-source"
-      ]
+      "slug": "packaging",
+      "name": "先进封装",
+      "group": "field",
+      "tags": ["先进封装"],
+      "definition": "CoWoS、SoIC、混合键合等先进封装的产能与技术进展：GPU 与 HBM 能否装到一起的关键。",
+      "related": ["foundry", "memory", "tsmc"]
     },
     {
-      "slug": "kimi",
-      "name": "Kimi / 月之暗面",
-      "group": "company",
-      "entityId": "kimi",
-      "tags": [
-        "entity:kimi"
-      ],
-      "definition": "月之暗面 Kimi 系列模型与产品动态：K 系列开源模型、长上下文技术与产品演进的追踪。",
-      "related": [
-        "qwen",
-        "deepseek",
-        "minimax"
-      ]
+      "slug": "equipment",
+      "name": "半导体设备与材料",
+      "group": "field",
+      "tags": ["设备/材料"],
+      "definition": "光刻、刻蚀、沉积等设备与关键材料的供给、订单和出口限制。",
+      "related": ["foundry", "export-controls", "asml"]
     },
     {
-      "slug": "minimax",
-      "name": "MiniMax",
-      "group": "company",
-      "entityId": "minimax",
-      "tags": [
-        "entity:minimax"
-      ],
-      "definition": "MiniMax 的模型与产品动态：M 系列大模型、语音与多模态能力、开源与商业化进展。",
-      "related": [
-        "kimi",
-        "qwen",
-        "voice"
-      ]
+      "slug": "servers",
+      "name": "AI 服务器与整机柜",
+      "group": "field",
+      "tags": ["服务器"],
+      "definition": "AI 服务器、整机柜系统与 ODM 供应链的出货、交付和订单变化。",
+      "related": ["gpu", "networking", "datacenter"]
     },
     {
-      "slug": "zhipu",
-      "name": "智谱 GLM",
-      "group": "company",
-      "entityId": "zhipu",
-      "tags": [
-        "entity:zhipu"
-      ],
-      "definition": "智谱的 GLM 系列模型动态：旗舰开源发布、代码与推理能力迭代、商业化与生态进展的追踪。",
-      "related": [
-        "qwen",
-        "kimi",
-        "open-source"
-      ]
+      "slug": "networking",
+      "name": "网络与光互连",
+      "group": "field",
+      "tags": ["网络/光互连"],
+      "definition": "交换机、光模块、CPO 与 NVLink/以太网等集群互连：决定万卡集群能不能跑起来。",
+      "related": ["servers", "datacenter", "broadcom"]
     },
     {
-      "slug": "xai",
-      "name": "xAI / Grok",
-      "group": "company",
-      "entityId": "xai",
-      "tags": [
-        "xAI",
-        "entity:xai"
-      ],
-      "definition": "马斯克 xAI 与 Grok 系列的全部动态：模型迭代、算力扩张与 X 平台整合的持续追踪。",
-      "related": [
-        "openai",
-        "meta",
-        "industry"
-      ]
+      "slug": "datacenter",
+      "name": "数据中心",
+      "group": "field",
+      "tags": ["数据中心"],
+      "definition": "智算中心与超大规模数据中心的选址、建设、规模和液冷散热：算力落地的物理载体。",
+      "related": ["power", "cloud", "capex"]
     },
     {
-      "slug": "meta",
-      "name": "Meta / Llama",
-      "group": "company",
-      "entityId": "meta",
-      "tags": [
-        "Meta",
-        "entity:meta"
-      ],
-      "definition": "Meta 的 AI 动态：Llama 开源模型系列、超级智能实验室与元宇宙之外的 AI 豪赌。",
-      "related": [
-        "xai",
-        "open-source",
-        "industry"
-      ]
+      "slug": "power",
+      "name": "电力与能源",
+      "group": "field",
+      "tags": ["电力/能源"],
+      "definition": "数据中心用电、购电协议、核能与电网接入：越来越多的算力项目卡在电上。",
+      "related": ["datacenter", "capex", "cloud"]
     },
     {
-      "slug": "microsoft",
-      "name": "Microsoft / Copilot",
-      "group": "company",
-      "entityId": "microsoft",
-      "tags": [
-        "Microsoft",
-        "entity:microsoft"
-      ],
-      "definition": "微软的 AI 布局：Copilot 全家桶、Azure AI 基础设施与 OpenAI 合作关系的持续追踪。",
-      "related": [
-        "openai",
-        "coding",
-        "product-updates"
-      ]
+      "slug": "cloud",
+      "name": "云与算力租赁",
+      "group": "field",
+      "tags": ["云/算力租赁"],
+      "definition": "云厂商与 GPU 云的算力供给、租赁价格、容量协议和新实例：算力怎样卖给用户。",
+      "related": ["datacenter", "custom-asic", "microsoft"]
+    },
+    {
+      "slug": "training",
+      "name": "训练与集群",
+      "group": "field",
+      "tags": ["训练"],
+      "definition": "大模型训练集群的规模、训练方法与算力消耗：需求端最大的一笔账。",
+      "related": ["inference", "datacenter", "open-models"]
+    },
+    {
+      "slug": "inference",
+      "name": "推理与推理成本",
+      "group": "field",
+      "tags": ["推理"],
+      "definition": "推理芯片、推理服务与 token 价格的变化：算力需求从训练走向推理的主战场。",
+      "related": ["training", "cloud", "model-releases"]
+    },
+    {
+      "slug": "open-models",
+      "name": "开源模型",
+      "group": "field",
+      "tags": ["开源模型"],
+      "definition": "开源权重模型的发布、许可与生态：影响算力需求结构和国产模型竞争格局。",
+      "related": ["model-releases", "deepseek", "china-compute"]
+    },
+    {
+      "slug": "agents",
+      "name": "Agent 与企业应用",
+      "group": "field",
+      "tags": ["Agent"],
+      "definition": "AI Agent 与企业级落地：部署规模、收入与成本，决定上游算力的长期需求。",
+      "related": ["ai-coding", "inference", "openai"]
+    },
+    {
+      "slug": "ai-coding",
+      "name": "AI 编码",
+      "group": "field",
+      "tags": ["AI编码"],
+      "definition": "AI 编码工具与开发者平台：目前商业化最快的 AI 应用之一。",
+      "related": ["agents", "anthropic", "open-models"]
+    },
+    {
+      "slug": "multimodal",
+      "name": "多模态与生成",
+      "group": "field",
+      "tags": ["多模态"],
+      "definition": "图像、视频、语音与世界模型：推理算力消耗最大的应用方向。",
+      "related": ["inference", "ai-devices", "google"]
+    },
+    {
+      "slug": "ai-devices",
+      "name": "AI 终端",
+      "group": "field",
+      "tags": ["AI终端"],
+      "definition": "AI 手机、AI PC、AI 眼镜等终端与端侧芯片：算力从云走向设备。",
+      "related": ["embodied", "apple", "multimodal"]
+    },
+    {
+      "slug": "embodied",
+      "name": "具身智能与机器人",
+      "group": "field",
+      "tags": ["具身智能"],
+      "definition": "人形机器人、具身智能模型与核心零部件：量产、订单和成本曲线。",
+      "related": ["autonomous-driving", "ai-devices", "tesla"]
+    },
+    {
+      "slug": "autonomous-driving",
+      "name": "自动驾驶",
+      "group": "field",
+      "tags": ["自动驾驶"],
+      "definition": "自动驾驶与 Robotaxi 的车载算力、模型与商业化进展。",
+      "related": ["embodied", "tesla", "inference"]
+    },
+    {
+      "slug": "capex",
+      "name": "资本开支",
+      "group": "field",
+      "tags": ["资本开支"],
+      "definition": "云厂商与模型公司的资本开支计划和指引：整条产业链的需求总闸门。",
+      "related": ["datacenter", "earnings", "cloud"]
+    },
+    {
+      "slug": "export-controls",
+      "name": "出口管制",
+      "group": "field",
+      "tags": ["出口管制"],
+      "definition": "芯片与设备出口管制、实体清单和许可：重塑全球 AI 供应链的政策变量。",
+      "related": ["china-compute", "policy", "equipment"]
+    },
+    {
+      "slug": "china-compute",
+      "name": "国产算力",
+      "group": "field",
+      "tags": ["国产算力"],
+      "definition": "国产 AI 芯片、制造与算力基础设施的替代进展：昇腾、寒武纪、中芯国际等。",
+      "related": ["export-controls", "huawei", "smic"]
     },
     {
       "slug": "nvidia",
       "name": "NVIDIA 英伟达",
       "group": "company",
       "entityId": "nvidia",
-      "tags": [
-        "entity:nvidia"
-      ],
-      "definition": "英伟达的 AI 芯片与生态动态：GPU 新品、CUDA 生态、机器人平台与 AI 算力市场的风向。",
-      "related": [
-        "engineering",
-        "industry",
-        "embodied"
-      ]
+      "tags": ["NVIDIA", "entity:nvidia"],
+      "definition": "英伟达的 GPU 路线图、数据中心业务、财报指引、供应链与对华出口的持续追踪。",
+      "related": ["amd", "tsmc", "gpu"]
     },
     {
-      "slug": "hugging-face",
-      "name": "Hugging Face",
+      "slug": "amd",
+      "name": "AMD",
       "group": "company",
-      "entityId": "hugging-face",
-      "tags": [
-        "Hugging Face",
-        "entity:hugging-face"
-      ],
-      "definition": "Hugging Face 开源社区动态：热门模型与数据集、排行榜变化与开源生态的晴雨表。",
-      "related": [
-        "open-source",
-        "model-releases",
-        "data-training"
-      ]
+      "entityId": "amd",
+      "tags": ["AMD", "entity:amd"],
+      "definition": "AMD 的 Instinct 加速器、EPYC 处理器、并购与数据中心客户进展。",
+      "related": ["nvidia", "tsmc", "gpu"]
     },
     {
-      "slug": "cursor",
-      "name": "Cursor",
+      "slug": "intel",
+      "name": "Intel 英特尔",
       "group": "company",
-      "entityId": "cursor",
-      "tags": [
-        "entity:cursor"
-      ],
-      "definition": "Cursor 编辑器的产品迭代与生态动态——AI 编码工具竞争中最受关注的玩家之一。",
-      "related": [
-        "coding",
-        "agent",
-        "product-updates"
-      ]
+      "entityId": "intel",
+      "tags": ["Intel", "entity:intel"],
+      "definition": "英特尔的先进制程与代工业务、AI 芯片、政府补贴与经营调整。",
+      "related": ["tsmc", "foundry", "amd"]
     },
     {
-      "slug": "openrouter",
-      "name": "OpenRouter",
+      "slug": "tsmc",
+      "name": "TSMC 台积电",
       "group": "company",
-      "entityId": "openrouter",
-      "tags": [
-        "entity:openrouter"
-      ],
-      "definition": "OpenRouter 模型路由平台动态：新模型上架、用量排行与开发者选型的真实市场信号。",
-      "related": [
-        "engineering",
-        "model-releases",
-        "open-source"
-      ]
+      "entityId": "tsmc",
+      "tags": ["TSMC", "entity:tsmc"],
+      "definition": "台积电的先进制程、CoWoS 产能、海外建厂、月度营收与资本开支。",
+      "related": ["foundry", "packaging", "nvidia"]
     },
     {
-      "slug": "agent",
-      "name": "Agent 智能体",
-      "group": "field",
-      "tags": [
-        "Agent"
-      ],
-      "definition": "让模型自主规划、调用工具、完成多步任务的技术方向——从 Claude Code、Manus 到各家 Agent 框架与评测基准的全部动态。",
-      "related": [
-        "mcp",
-        "coding",
-        "reasoning"
-      ]
+      "slug": "samsung",
+      "name": "Samsung 三星",
+      "group": "company",
+      "entityId": "samsung",
+      "tags": ["Samsung", "entity:samsung"],
+      "definition": "三星的 HBM 与存储、晶圆代工、AI 基础设施投资与终端 AI。",
+      "related": ["sk-hynix", "micron", "memory"]
     },
     {
-      "slug": "coding",
-      "name": "AI 编码",
-      "group": "field",
-      "tags": [
-        "编码"
-      ],
-      "definition": "AI 写代码的一切：编码助手、Vibe Coding、代码模型评测与开发工作流变革。",
-      "related": [
-        "agent",
-        "cursor",
-        "tutorials"
-      ]
+      "slug": "sk-hynix",
+      "name": "SK hynix 海力士",
+      "group": "company",
+      "entityId": "sk-hynix",
+      "tags": ["SK hynix", "entity:sk-hynix"],
+      "definition": "SK 海力士的 HBM 代际、产能扩张、大客户供货与业绩。",
+      "related": ["samsung", "micron", "memory"]
     },
     {
-      "slug": "reasoning",
-      "name": "推理能力",
-      "group": "field",
-      "tags": [
-        "推理"
-      ],
-      "definition": "模型推理能力的进展：思维链、推理模型、数学与逻辑基准的突破与争议。",
-      "related": [
-        "papers",
-        "model-releases",
-        "agent"
-      ]
+      "slug": "micron",
+      "name": "Micron 美光",
+      "group": "company",
+      "entityId": "micron",
+      "tags": ["Micron", "entity:micron"],
+      "definition": "美光的 HBM 与数据中心存储、产能投资与财报指引。",
+      "related": ["sk-hynix", "samsung", "memory"]
     },
     {
-      "slug": "multimodal",
-      "name": "多模态",
-      "group": "field",
-      "tags": [
-        "多模态"
-      ],
-      "definition": "文本之外的能力：视觉理解、图文混合、音视频输入输出的模型与产品进展。",
-      "related": [
-        "image-gen",
-        "video",
-        "voice"
-      ]
+      "slug": "asml",
+      "name": "ASML 阿斯麦",
+      "group": "company",
+      "entityId": "asml",
+      "tags": ["ASML", "entity:asml"],
+      "definition": "ASML 的 EUV 与 High-NA 光刻机订单、交付、出口限制与业绩。",
+      "related": ["equipment", "foundry", "export-controls"]
     },
     {
-      "slug": "image-gen",
-      "name": "图像生成",
-      "group": "field",
-      "tags": [
-        "图像生成"
-      ],
-      "definition": "AI 画图的最前线：文生图模型迭代、图像编辑能力与创作工具生态的全部动态。",
-      "related": [
-        "video",
-        "multimodal",
-        "product-updates"
-      ]
+      "slug": "broadcom",
+      "name": "Broadcom 博通",
+      "group": "company",
+      "entityId": "broadcom",
+      "tags": ["Broadcom", "entity:broadcom"],
+      "definition": "博通的定制 AI 芯片客户、以太网交换芯片与 AI 业务收入。",
+      "related": ["custom-asic", "networking", "google"]
     },
     {
-      "slug": "video",
-      "name": "AI 视频",
-      "group": "field",
-      "tags": [
-        "视频"
-      ],
-      "definition": "AI 视频生成与理解：文生视频模型、视频编辑工具与影视创作变革的追踪。",
-      "related": [
-        "image-gen",
-        "multimodal",
-        "voice"
-      ]
+      "slug": "huawei",
+      "name": "华为 / 昇腾",
+      "group": "company",
+      "entityId": "huawei",
+      "tags": ["华为", "entity:huawei"],
+      "definition": "华为昇腾芯片与集群、算力产品路线图和国产替代生态。",
+      "related": ["china-compute", "smic", "export-controls"]
     },
     {
-      "slug": "voice",
-      "name": "语音与音频",
-      "group": "field",
-      "tags": [
-        "语音"
-      ],
-      "definition": "AI 语音与音频的进展：语音合成、实时对话、音乐生成与音频理解的模型与产品。",
-      "related": [
-        "multimodal",
-        "video",
-        "product-updates"
-      ]
+      "slug": "smic",
+      "name": "中芯国际",
+      "group": "company",
+      "entityId": "smic",
+      "tags": ["中芯国际", "entity:smic"],
+      "definition": "中芯国际的先进制程进展、产能利用率、扩产与业绩。",
+      "related": ["china-compute", "huawei", "foundry"]
     },
     {
-      "slug": "embodied",
-      "name": "具身智能",
-      "group": "field",
-      "tags": [
-        "具身智能"
-      ],
-      "definition": "AI 走进物理世界：人形机器人、具身基础模型与真实环境操作能力的进展追踪。",
-      "related": [
-        "nvidia",
-        "multimodal",
-        "papers"
-      ]
+      "slug": "microsoft",
+      "name": "Microsoft / Azure",
+      "group": "company",
+      "entityId": "microsoft",
+      "tags": ["Microsoft", "entity:microsoft"],
+      "definition": "微软的 Azure 算力、数据中心投资、自研芯片、Copilot 与 OpenAI 合作。",
+      "related": ["openai", "cloud", "capex"]
     },
     {
-      "slug": "on-device",
-      "name": "端侧 AI",
-      "group": "field",
-      "tags": [
-        "端侧"
-      ],
-      "definition": "跑在手机、电脑与边缘设备上的 AI：小模型、本地推理与端侧芯片的进展。",
-      "related": [
-        "engineering",
-        "open-source",
-        "model-releases"
-      ]
+      "slug": "google",
+      "name": "Google / TPU / Gemini",
+      "group": "company",
+      "entityId": "google",
+      "tags": ["Google", "entity:google"],
+      "definition": "谷歌的 TPU、Google Cloud、Gemini 模型与数据中心投资。",
+      "related": ["custom-asic", "cloud", "multimodal"]
     },
     {
-      "slug": "open-source",
-      "name": "开源生态",
-      "group": "field",
-      "tags": [
-        "开源生态",
-        "开源/仓库"
-      ],
-      "definition": "开源模型、框架与仓库动态：权重开放、社区项目爆火、开源与闭源的力量消长。",
-      "related": [
-        "model-releases",
-        "hugging-face",
-        "coding"
-      ]
+      "slug": "amazon",
+      "name": "Amazon / AWS",
+      "group": "company",
+      "entityId": "amazon",
+      "tags": ["Amazon", "entity:amazon"],
+      "definition": "亚马逊 AWS 的 Trainium 芯片、算力容量、数据中心与模型合作。",
+      "related": ["cloud", "custom-asic", "anthropic"]
     },
     {
-      "slug": "engineering",
-      "name": "部署工程",
-      "group": "field",
-      "tags": [
-        "部署/工程"
-      ],
-      "definition": "把模型跑起来的工程实践：推理优化、显存与成本、Serving 架构与基础设施选型。",
-      "related": [
-        "open-source",
-        "data-training",
-        "on-device"
-      ]
+      "slug": "meta",
+      "name": "Meta",
+      "group": "company",
+      "entityId": "meta",
+      "tags": ["Meta", "entity:meta"],
+      "definition": "Meta 的算力集群、自研 MTIA 芯片、Llama 模型与资本开支。",
+      "related": ["capex", "open-models", "datacenter"]
     },
     {
-      "slug": "data-training",
-      "name": "数据与训练",
-      "group": "field",
-      "tags": [
-        "数据/训练"
-      ],
-      "definition": "训练侧的门道：数据集构建、合成数据、预训练与后训练方法、算力与训练成本。",
-      "related": [
-        "papers",
-        "engineering",
-        "model-releases"
-      ]
+      "slug": "oracle",
+      "name": "Oracle 甲骨文",
+      "group": "company",
+      "entityId": "oracle",
+      "tags": ["Oracle", "entity:oracle"],
+      "definition": "甲骨文 OCI 的 AI 算力订单、数据中心建设与剩余履约义务。",
+      "related": ["cloud", "openai", "datacenter"]
     },
     {
-      "slug": "safety",
-      "name": "安全对齐",
-      "group": "field",
-      "tags": [
-        "安全/对齐"
-      ],
-      "definition": "AI 安全与对齐：越狱与防御、模型行为研究、安全评测与治理框架的进展。",
-      "related": [
-        "papers",
-        "policy",
-        "reasoning"
-      ]
+      "slug": "openai",
+      "name": "OpenAI",
+      "group": "company",
+      "entityId": "openai",
+      "tags": ["OpenAI", "entity:openai"],
+      "definition": "OpenAI 的模型与产品、算力采购与自研芯片、融资和数据中心计划。",
+      "related": ["microsoft", "anthropic", "model-releases"]
     },
     {
-      "slug": "mcp",
-      "name": "MCP 与工具调用",
-      "group": "field",
-      "tags": [
-        "MCP/工具调用"
-      ],
-      "definition": "模型连接外部世界的协议与实践：MCP 生态、function calling、工具链集成的动态。",
-      "related": [
-        "agent",
-        "coding",
-        "open-source"
-      ]
+      "slug": "anthropic",
+      "name": "Anthropic",
+      "group": "company",
+      "entityId": "anthropic",
+      "tags": ["Anthropic", "entity:anthropic"],
+      "definition": "Anthropic 的 Claude 模型、企业收入、算力合作与融资。",
+      "related": ["openai", "amazon", "ai-coding"]
+    },
+    {
+      "slug": "xai",
+      "name": "xAI",
+      "group": "company",
+      "entityId": "xai",
+      "tags": ["xAI", "entity:xai"],
+      "definition": "xAI 的 Grok 模型、Colossus 集群与融资动态。",
+      "related": ["openai", "datacenter", "training"]
+    },
+    {
+      "slug": "deepseek",
+      "name": "DeepSeek",
+      "group": "company",
+      "entityId": "deepseek",
+      "tags": ["DeepSeek", "entity:deepseek"],
+      "definition": "DeepSeek 的模型发布、训练与推理效率，以及对算力需求与国产芯片的影响。",
+      "related": ["open-models", "china-compute", "alibaba"]
+    },
+    {
+      "slug": "alibaba",
+      "name": "阿里巴巴 / 千问",
+      "group": "company",
+      "entityId": "alibaba",
+      "tags": ["阿里巴巴", "entity:alibaba"],
+      "definition": "阿里巴巴的千问模型、阿里云算力投入、自研芯片与 AI 资本开支。",
+      "related": ["deepseek", "cloud", "bytedance"]
+    },
+    {
+      "slug": "bytedance",
+      "name": "字节跳动 / 豆包",
+      "group": "company",
+      "entityId": "bytedance",
+      "tags": ["字节跳动", "entity:bytedance"],
+      "definition": "字节跳动的豆包模型、火山引擎算力与 AI 基础设施投入。",
+      "related": ["alibaba", "tencent", "cloud"]
+    },
+    {
+      "slug": "tencent",
+      "name": "腾讯",
+      "group": "company",
+      "entityId": "tencent",
+      "tags": ["腾讯", "entity:tencent"],
+      "definition": "腾讯的混元模型、腾讯云算力与 AI 资本开支。",
+      "related": ["alibaba", "bytedance", "capex"]
+    },
+    {
+      "slug": "apple",
+      "name": "Apple 苹果",
+      "group": "company",
+      "entityId": "apple",
+      "tags": ["Apple", "entity:apple"],
+      "definition": "苹果的端侧 AI、自研芯片与 AI 服务器、模型合作。",
+      "related": ["ai-devices", "tsmc", "google"]
+    },
+    {
+      "slug": "tesla",
+      "name": "Tesla 特斯拉",
+      "group": "company",
+      "entityId": "tesla",
+      "tags": ["Tesla", "entity:tesla"],
+      "definition": "特斯拉的自动驾驶、Optimus 机器人、训练算力与自研芯片。",
+      "related": ["autonomous-driving", "embodied", "xai"]
+    },
+    {
+      "slug": "launches",
+      "name": "新品发布",
+      "group": "genre",
+      "tags": ["新品发布"],
+      "definition": "芯片、系统、云服务与 AI 产品的正式发布和路线图更新。",
+      "related": ["model-releases", "gpu", "servers"]
     },
     {
       "slug": "model-releases",
       "name": "模型发布",
       "group": "genre",
-      "tags": [
-        "模型发布"
-      ],
-      "definition": "新模型的发布、开源与迭代：大模型厂商的旗舰更新、开源权重放出、性能与价格变化的第一时间记录。",
-      "related": [
-        "product-updates",
-        "papers",
-        "open-source"
-      ]
+      "tags": ["模型发布"],
+      "definition": "重要模型的发布与大版本更新：能力、价格与可用性的变化。",
+      "related": ["launches", "open-models", "inference"]
     },
     {
-      "slug": "product-updates",
-      "name": "产品更新",
+      "slug": "supply-chain",
+      "name": "产能与供应链",
       "group": "genre",
-      "tags": [
-        "产品更新"
-      ],
-      "definition": "AI 产品与应用的功能上新、改版与商业化动态——谁家的产品变强了、变贵了、能用了。",
-      "related": [
-        "model-releases",
-        "industry",
-        "coding"
-      ]
+      "tags": ["产能/供应链"],
+      "definition": "产能、交付、良率、涨价与缺货：供需关系变化的第一手信号。",
+      "related": ["memory", "packaging", "contracts"]
     },
     {
-      "slug": "papers",
-      "name": "论文研究",
+      "slug": "deals",
+      "name": "融资与并购",
       "group": "genre",
-      "tags": [
-        "论文/研究"
-      ],
-      "definition": "值得读的 AI 论文与研究成果：架构创新、训练方法、能力测量与理论进展的精选解读。",
-      "related": [
-        "reasoning",
-        "safety",
-        "data-training"
-      ]
+      "tags": ["融资/并购"],
+      "definition": "AI 公司与基础设施的融资、并购和上市：资本流向哪一环。",
+      "related": ["contracts", "earnings", "capex"]
     },
     {
-      "slug": "benchmarks",
-      "name": "评测基准",
+      "slug": "contracts",
+      "name": "订单与合作",
       "group": "genre",
-      "tags": [
-        "评测/基准"
-      ],
-      "definition": "模型到底谁强：Benchmark 成绩、评测方法论争议与排行榜变化的持续记录。",
-      "related": [
-        "model-releases",
-        "papers",
-        "reasoning"
-      ]
+      "tags": ["订单/合作"],
+      "definition": "大额算力订单、采购协议与战略合作：需求落到具体金额和交付时间。",
+      "related": ["deals", "supply-chain", "cloud"]
     },
     {
-      "slug": "tutorials",
-      "name": "教程实践",
+      "slug": "earnings",
+      "name": "财报与业绩",
       "group": "genre",
-      "tags": [
-        "教程/实践"
-      ],
-      "definition": "拿来就能用的实操内容：提示词技巧、工作流搭建、工具用法与踩坑经验。",
-      "related": [
-        "coding",
-        "agent",
-        "product-updates"
-      ]
-    },
-    {
-      "slug": "opinions",
-      "name": "大佬观点",
-      "group": "genre",
-      "tags": [
-        "大佬观点"
-      ],
-      "definition": "行业关键人物在想什么：创始人访谈、研究者论战、投资人判断的观点集合。",
-      "related": [
-        "trends",
-        "industry"
-      ]
-    },
-    {
-      "slug": "trends",
-      "name": "现象与趋势",
-      "group": "genre",
-      "tags": [
-        "现象/趋势"
-      ],
-      "definition": "正在发生的行业级变化：使用习惯迁移、能力涌现、社会影响与市场格局的观察。",
-      "related": [
-        "opinions",
-        "industry",
-        "safety"
-      ]
-    },
-    {
-      "slug": "industry",
-      "name": "行业动态",
-      "group": "genre",
-      "tags": [
-        "行业动态"
-      ],
-      "definition": "AI 行业的商业脉搏：融资并购、人事变动、合作与竞争、政策与市场信号。",
-      "related": [
-        "trends",
-        "opinions",
-        "policy"
-      ]
+      "tags": ["财报/业绩"],
+      "definition": "产业链公司的财报、业绩指引与关键经营数据。",
+      "related": ["capex", "deals", "nvidia"]
     },
     {
       "slug": "policy",
-      "name": "政策监管",
+      "name": "政策与监管",
       "group": "genre",
-      "tags": [
-        "政策/监管"
-      ],
-      "definition": "AI 相关政策法规与政府监管动态：立法进展、出口管制与全球治理框架的追踪。",
-      "related": [
-        "industry",
-        "safety",
-        "trends"
-      ]
+      "tags": ["政策/监管"],
+      "definition": "出口管制、关税、产业补贴、AI 监管与重大诉讼。",
+      "related": ["export-controls", "china-compute", "deals"]
+    },
+    {
+      "slug": "research",
+      "name": "技术与研究",
+      "group": "genre",
+      "tags": ["技术/研究"],
+      "definition": "论文、技术报告与评测：可能改变技术路线和算力需求的研究。",
+      "related": ["training", "inference", "analysis"]
+    },
+    {
+      "slug": "analysis",
+      "name": "行业分析",
+      "group": "genre",
+      "tags": ["行业分析"],
+      "definition": "产业链深度分析、市场数据与研究报告。",
+      "related": ["people", "earnings", "supply-chain"]
+    },
+    {
+      "slug": "people",
+      "name": "人物观点",
+      "group": "genre",
+      "tags": ["人物观点"],
+      "definition": "产业链关键人物的访谈、判断与公开表态。",
+      "related": ["analysis", "policy", "capex"]
     }
   ]
 }

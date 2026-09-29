@@ -26,7 +26,8 @@ function gap(a: string, b: string): number {
   return H * 0.085;
 }
 
-const S = SITE.subject;
+// Spaces in the subject ("AI 产业链") are left to the ink spacing below.
+const S = SITE.subject.replace(/\s+/g, "");
 const NAMEPLATES: Record<string, Array<{ text: string; accent: boolean }>> = {
   daily: [
     { text: S, accent: true },
