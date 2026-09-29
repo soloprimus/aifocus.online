@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   AIHOT design tokens — the look of the original site: warm off-white paper,
-   ink text, one teal accent (cyan in dark), hairline borders, no gradients.
+   AIFocus design tokens, on AIHOT's system: warm off-white paper, ink text,
+   one focus-blue accent (periwinkle in dark), hairline borders, no gradients.
    Components use the semantic names below; values change per theme only.
    --------------------------------------------------------------------------- */
 
@@ -13,12 +13,12 @@
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
   /* Brand (VI), fixed across themes. */
-  --color-brand-teal: #176b75;
-  --color-brand-cyan-0: #5deef0;
-  --color-brand-cyan-20: #2ce2e8;
-  --color-brand-cyan-54: #12ccd8;
-  --color-brand-cyan-82: #08abc2;
-  --color-brand-cyan-100: #078ea9;
+  --color-brand-blue: #2446c7;
+  --color-brand-blue-0: #c3cfff;
+  --color-brand-blue-20: #9aaeff;
+  --color-brand-blue-54: #7892ff;
+  --color-brand-blue-82: #4d6be6;
+  --color-brand-blue-100: #2446c7;
 
   /* Semantic colours. */
   --color-bg: var(--bg);
@@ -106,12 +106,12 @@
   --line: #dfe4e1;
   --line-strong: #d1d9d5;
   --line-soft: #e9ede9;
-  --accent: #176b75;
-  --accent-ink: #145f68;
-  --accent-soft: rgba(23, 107, 117, 0.08);
-  --accent-softer: rgba(23, 107, 117, 0.05);
+  --accent: #2446c7;
+  --accent-ink: #1e3aa6;
+  --accent-soft: rgba(36, 70, 199, 0.08);
+  --accent-softer: rgba(36, 70, 199, 0.05);
   --accent-contrast: #ffffff;
-  --note: #526f72;
+  --note: #55667d;
   --hot: #b3402a;
   --hot-soft: rgba(179, 64, 42, 0.08);
   --amber: #b8873a;
@@ -138,7 +138,7 @@
   --shadow-pop: 0 12px 32px rgba(28, 39, 51, 0.12);
   --prose-ink: #26323a;
   --code-bg: #f6f7f4;
-  --selection: rgba(23, 107, 117, 0.16);
+  --selection: rgba(36, 70, 199, 0.16);
 }
 
 [data-theme="dark"] {
@@ -159,12 +159,12 @@
   --line: rgba(255, 255, 255, 0.08);
   --line-strong: rgba(255, 255, 255, 0.12);
   --line-soft: rgba(255, 255, 255, 0.06);
-  --accent: #12ccd8;
-  --accent-ink: #2ce2e8;
-  --accent-soft: rgba(18, 204, 216, 0.12);
-  --accent-softer: rgba(18, 204, 216, 0.06);
+  --accent: #7892ff;
+  --accent-ink: #9aaeff;
+  --accent-soft: rgba(120, 146, 255, 0.12);
+  --accent-softer: rgba(120, 146, 255, 0.06);
   --accent-contrast: #000000;
-  --note: #8fb8a8;
+  --note: #93a6c8;
   --hot: #d86a52;
   --hot-soft: rgba(216, 106, 82, 0.12);
   --amber: #d3b26a;
@@ -185,7 +185,7 @@
   --shadow-pop: 0 16px 40px rgba(0, 0, 0, 0.45);
   --prose-ink: #d7dfdf;
   --code-bg: #10151c;
-  --selection: rgba(18, 204, 216, 0.22);
+  --selection: rgba(120, 146, 255, 0.22);
 }
 
 @layer base {

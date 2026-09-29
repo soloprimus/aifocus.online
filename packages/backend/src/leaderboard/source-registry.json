@@ -80,7 +80,7 @@
           "usage": "保留综合榜写作与表达预算中的 3%；不进入文学创作的写作分类。",
           "limits": "两项均分衡量组合表现，不能当成 Language 单项成绩。官方页面切换分类或是否包含微调模型时，分数与排序会随之变化。组织参与方 Abacus.AI 同时开发 Smaug 模型，其独家成绩需要其他独立来源补充。",
           "license": "Apache 2.0",
-          "attribution": "分项成绩由 LiveBench 发布，AIHOT 按上述两类等权汇总并排序。两项均分与 AIHOT 共识分使用不同尺度，不能直接相加。",
+          "attribution": "分项成绩由 LiveBench 发布，本站按上述两类等权汇总并排序。两项均分与本站共识分使用不同尺度，不能直接相加。",
           "components": { "note": "Language + IF 各占 50%，使用未舍入的分项成绩求平均。", "label": "两项均分" }
         },
         {
@@ -290,7 +290,7 @@
           "usage": "两项均分作为一份证据参与排名，各专项共用 LiveBench 证据家族；Global Average 仅供参考，不重复计票。",
           "limits": "两项均分衡量组合表现，不能当成 Coding 单项成绩。官方页面切换分类或是否包含微调模型时，分数与排序会随之变化。组织参与方 Abacus.AI 同时开发 Smaug 模型，其独家成绩需要其他独立来源补充。",
           "license": "Apache 2.0",
-          "attribution": "分项成绩由 LiveBench 发布，AIHOT 按上述两类等权汇总并排序。两项均分与 AIHOT 共识分使用不同尺度，不能直接相加。",
+          "attribution": "分项成绩由 LiveBench 发布，本站按上述两类等权汇总并排序。两项均分与本站共识分使用不同尺度，不能直接相加。",
           "components": { "note": "Coding + Agentic Coding 各占 50%，使用未舍入的分项成绩求平均。", "label": "两项均分" }
         },
         {
@@ -456,7 +456,7 @@
           "usage": "两项均分作为一份证据参与排名，各专项共用 LiveBench 证据家族；Global Average 仅供参考，不重复计票。",
           "limits": "两项均分衡量组合表现，不能当成 Reasoning 单项成绩。官方页面切换分类或是否包含微调模型时，分数与排序会随之变化。组织参与方 Abacus.AI 同时开发 Smaug 模型，其独家成绩需要其他独立来源补充。",
           "license": "Apache 2.0",
-          "attribution": "分项成绩由 LiveBench 发布，AIHOT 按上述两类等权汇总并排序。两项均分与 AIHOT 共识分使用不同尺度，不能直接相加。",
+          "attribution": "分项成绩由 LiveBench 发布，本站按上述两类等权汇总并排序。两项均分与本站共识分使用不同尺度，不能直接相加。",
           "components": { "note": "Reasoning + Mathematics 各占 50%，使用未舍入的分项成绩求平均。", "label": "两项均分" }
         },
         {

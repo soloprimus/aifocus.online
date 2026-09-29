@@ -38,7 +38,7 @@ export function meta({ loaderData }: Route.MetaArgs) {
     path,
     image: `/og/topics/${topic.slug}.png`,
     noindex: !topic.indexable,
-    jsonLd: breadcrumbLd([{ name: SITE.name, path: "/" }, { name: "主题", path: "/topics" }, { name: topic.name, path: `/topics/${topic.slug}` }]),
+    jsonLd: breadcrumbLd([{ name: SITE.name, path: "/" }, { name: "产业链地图", path: "/topics" }, { name: topic.name, path: `/topics/${topic.slug}` }]),
   });
 }
 

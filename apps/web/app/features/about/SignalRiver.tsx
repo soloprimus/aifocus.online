@@ -165,7 +165,7 @@ function readColors(probe: CanvasRenderingContext2D): Colors {
   const bg = parse(getComputedStyle(document.body).backgroundColor, [250, 249, 246]);
   return {
     ink: parse(root.getPropertyValue("--ink").trim(), [32, 42, 48]),
-    accent: parse(root.getPropertyValue("--accent").trim(), [23, 107, 117]),
+    accent: parse(root.getPropertyValue("--accent").trim(), [36, 70, 199]),
     line: parse(root.getPropertyValue("--line-strong").trim(), [200, 205, 205]),
     surface: parse(root.getPropertyValue("--surface").trim(), [255, 255, 255]),
     bg,
